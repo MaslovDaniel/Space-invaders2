@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    color: rgb(165, 206, 15);
+    background-color: rgb(89, 189, 67);
+    font-size: 20px;
+    font-family: monospace;
+    background-size: cover;
+    margin: 0;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    border: 3px white solid;
+    background-color: #000;
+    margin-top: 10px;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(41, 161, 14);
+    
+}
+
+.modal {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    max-width: 240px;
+    max-height: 90px;
+    font-size: 60px;
+    margin-top: 20px;
+    color: black;
+    color: whitesmoke;
+    border-radius: 20px;
+}
