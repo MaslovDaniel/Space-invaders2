@@ -10,6 +10,7 @@ function createHero(board) {
         pos: masterPos,
         isShoot: false,
         isWin: false,
+        counterFastShoot: 3
     }
 
     board[gHero.pos.i][gHero.pos.j].gameElement = HERO
@@ -25,6 +26,14 @@ function onKeyDown(ev) {
             break
         case ' ':
             shoot()
+            break
+        case 'n':
+            if (gGame.isHitAlien) blowUpNegs(gNextPos.i, gNextPos.j)
+            console.log('blow up negs')
+            break
+        case 'x':
+            console.log('fast shoot')
+            fastShoot()
             break
     }
 
@@ -74,10 +83,17 @@ function blinkLaser(pos, typeLaser) {
 
     var gNextPos = { i: pos.i - 1, j: pos.j }
     if (gBoard[gNextPos.i][gNextPos.j].gameElement === ALIEN) {
+        clearInterval(gLaserInterval)
+        console.log('gGame.aliensCount before hit alien', gGame.aliensCount)
 
         laserHitsAlien(gNextPos)
         return
+    } else if (gBoard[gNextPos.i][gNextPos.j].gameElement === CANDY) {
+        clearInterval(gLaserInterval);
+        hitCandy(gNextPos)
+        return
     }
+    
     pos.i--
     updateCell(pos, typeLaser, typeLaser) // show laser next positoin 
 }
@@ -89,13 +105,16 @@ function laserHitsAlien(pos) {
 
     gGame.score += 10
     gGame.aliensCount++
+
+    console.log('gGame.aliensCount after hit alien', gGame.aliensCount)
+
     gHero.isShoot = false
     gGame.isHitAlien = true
 
-    if (gGame.aliensCount === COUNT_ALIENS_COL * COUNT_ALIENS_ROW) {
+    if (gGame.aliensCount === COUNT_ALIENS_COL * COUNT_ALIENS_ROW - 1) {
         console.log('you win')
         gHero.isWin = true
-          gameDone() 
+        gameDone()
     }
     document.querySelector('.score').innerText = 'score:' + gGame.score
     return
@@ -118,8 +137,8 @@ function restartGame() {
     console.log('Click on restart game')
     clearInterval(gLaserInterval)
     init()
-   
-  }
+
+}
 
 
 
