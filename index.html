@@ -10,28 +10,23 @@
 </head>
 
 <body onload="init()" onkeyup="onKeyDown(event)">
-  <h1>The mushroom hunter</h1>
+  <h1></h1>
+  <h2 class="h2"></h2>
 
-  <div>
+  <div class="top_menu">
     <button class=" freeze-mode" onclick="freezeMode(this)">freeze mode</button>
     <button class="startBtn" onmousedown="startGame()">start</button>
+    <button class="restartBtn" onmousedown="restartGame()">restart</button>
   </div>
 
   <div class="info">
-    <p class="score "></p>
+    <p class="score ">Score:</p>
     <p class="fast-shoot">Fast shoots left:3</p>
   </div>
 
   <table cellspacing="0">
     <tbody class="board"></tbody>
   </table>
-
-
-  <div>
-    <button onclick="getLevel('easy')">easy</button>
-    <button onclick="getLevel('medium')">medium</button>
-    <button onclick="getLevel('hard')">hard</button>
-  </div>
 
   <div class="controls">
     <h3>Special skills:</h3>
@@ -41,19 +36,12 @@
     <p>Fast Shot: 'x'</p>
     <br>
     <p>Shoot carots to freeze the aliens </p>
-</div>
-
-
-  <div class="modal">
-    <button class="restartBtn" onmousedown="restartGame()">restart</button>
   </div>
-
+  
   <script src="js/aliens.js"></script>
   <script src="js/hero.js"></script>
   <script src="js/util.js"></script>
   <script src="js/main.js"></script>
-
-
   
 </body>
 
